@@ -60,7 +60,6 @@ public final class Utils {
       throws RuntimeException {
 
     // Integer.MAX_VALUE 2_147_483_647
-
     if(number == 0){
       return "";
     }

@@ -1,4 +1,4 @@
-package org.example.utils;
+package org.daffodile.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,9 +44,16 @@ public final class Utils {
   };
 
   public static String numberToText(Integer number) {
-    return numberToTextHelper(number).replaceAll("(\\sBillion)(\\s+\\w+)", "$1,$2")
-        .replaceAll("(\\sMillion)(\\s+\\w+)", "$1,$2")
-        .replaceAll("(\\sThousand)(\\s+\\w+)", "$1,$2");
+    if(number == null){
+      throw new RuntimeException("Null number value.");
+    }else if(number < 1){
+      return "Invalid number.";
+    }
+
+    return numberToTextHelper(number)
+      .replaceAll(String.format("(\\s%s)(\\s+\\w+)", defs.get(1_000_000_000)), "$1,$2")
+        .replaceAll(String.format("(\\s%s)(\\s+\\w+)",defs.get(1_000_000)), "$1,$2")
+        .replaceAll(String.format("(\\s%s)(\\s+\\w+)", defs.get(1_000)), "$1,$2");
   }
 
   private static String numberToTextHelper(Integer number)
@@ -54,9 +61,7 @@ public final class Utils {
 
     // Integer.MAX_VALUE 2_147_483_647
 
-    if (number == null) {
-      throw new RuntimeException("Invalid number value.");
-    }else if(number == 0){
+    if(number == 0){
       return "";
     }
 
@@ -80,14 +85,14 @@ public final class Utils {
       return builder.toString();
     }
 
-    int divident = Double.valueOf(Math.pow(10, pwr)).intValue();
-    int coef = number / divident;
+    int dividend = Double.valueOf(Math.pow(10, pwr)).intValue();
+    int cof = number / dividend;
 
-    builder.append(numberToTextHelper(coef));
+    builder.append(numberToTextHelper(cof));
     builder.append(" ");
-    builder.append(defs.get(divident));
+    builder.append(defs.get(dividend));
 
-    int remainder = number % divident;
+    int remainder = number % dividend;
 
     String r = numberToTextHelper(remainder);
 

@@ -1,6 +1,6 @@
-package org.example;
+package org.daffodile;
 
-import org.example.utils.Utils;
+import org.daffodile.utils.Utils;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

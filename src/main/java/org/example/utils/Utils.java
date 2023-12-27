@@ -54,8 +54,10 @@ public final class Utils {
 
     // Integer.MAX_VALUE 2_147_483_647
 
-    if (number == null || number < 1) {
+    if (number == null) {
       throw new RuntimeException("Invalid number value.");
+    }else if(number == 0){
+      return "";
     }
 
     int pwr = Double.valueOf(Math.log10(number)).intValue();

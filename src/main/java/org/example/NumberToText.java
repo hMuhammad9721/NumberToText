@@ -11,6 +11,11 @@ public class NumberToText {
     System.out.println("Number To Text:");
     System.out.println("\tNumber: " + number);
     System.out.println("\tNumberToText: " + Utils.numberToText(number));
+
+    int number2 = 13_125_000;
+    System.out.println("Number To Text:");
+    System.out.println("\tNumber: " + number2);
+    System.out.println("\tNumberToText: " + Utils.numberToText(number2));
   }
 
 }
